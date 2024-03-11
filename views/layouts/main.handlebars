@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jenry's Tech Blog</title>
+    <link rel="stylesheet" href="/css/jass.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <button class="btn" id="home">Home</button>
+        <button class="btn" id="dashboard">Dashboard</button>
+        {{!-- {{#if logged_out}}
+          <button class="btn" id="login">login</button>
+        {{/if}} --}}
+        {{#if logged_in}}
+          <button class="btn" id="logout">logout</button>
+        {{/if}}
+      </nav>
+      <h1>Jenry's Tech Blog</h1>
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+    {{!-- {{#if logged_out}}
+      <script src="/public/js/login.js"></script>
+    {{/if}} --}}
+  </body>
+</html>
