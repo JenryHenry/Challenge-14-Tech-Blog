@@ -1,6 +1,25 @@
 const router = require("express").Router();
 const { User, Blogpost } = require("../../models");
 
+//Create new user                         Is this actually adding a user to the database????
+router.post("/", async (req, res) => {
+  try {
+    const userData = await User.create({
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.loggedIn = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/login", async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
@@ -43,19 +62,6 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
-  }
-});
-
-router.post("/", async (req, res) => {
-  try {
-    const dbBlogData = await Blogpost.create({
-      title: req.body.title,
-      content: req.body.content,
-      authorId: req.body.user_id,
-    });
-    //                                          ?????????? >>>>>>>>>>>
-  } catch (err) {
-    res.status(500).json(err);
   }
 });
 
