@@ -9,7 +9,7 @@
     <header>
       <nav>
         <a href='/' class='btn' id='homebtn'>Home</a>
-        <a href='/dashboard' class='btn'>Dashboard</a>
+        <a href='/dashboard' class='btn' id='dashboard'>Dashboard</a>
         {{!-- {{#if logged_out}}
           <button class="btn" id="login">login</button>
         {{/if}} --}}
@@ -28,6 +28,9 @@
     </main>
     {{#if logged_in}}
       <script src='/js/logout.js'></script>
+      <script src='/public/js/dashboard.js'></script>
+    {{else}}
+      <script src=''></script>
     {{/if}}
 
   </body>

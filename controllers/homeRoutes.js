@@ -59,6 +59,7 @@ router.get('/login', (req, res) => {
 
 router.get('/dashboard', withAuth, (req, res) => {
   try {
+    res.redirect('/');
     // pass loggedIn user data to blogForm???
     res.render('dashboard');
   } catch (err) {
